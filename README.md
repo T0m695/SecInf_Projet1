@@ -3,4 +3,6 @@ Système de détection d'anomalies et de gestion de logs pour la sécurité des 
 ## Sommaire
 ## Objectifs
 ## Outils utilisés
-## Architecture gobale
+## Architecture globale
+## Materiel requis
+> Un ordinateur avec au minimum 8Go de RAM, 20Go d'espace disque disponible et un processeur avec la virtualisation activée ainsi qu'une connexion internet.
