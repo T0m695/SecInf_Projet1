@@ -1,4 +1,4 @@
-# 📡 Installation de ElasticSearch
+# 📡ElasticSearch
 ## Prérequis
 Lorsque votre machine virtuelle est prête,ouvrez un terminal et mettez à jour le système avec la commande :
 ```sudo apt update && sudo apt upgrade -y```
@@ -38,6 +38,8 @@ cluster.initial_master_nodes: ["node-1"]
 
 Attention, **network.host: localhost** permet à Elasticsearch d’être accessible seulement depuis votre machine locale.
 
+Enregistrez vos modification en faisant Ctrl+O, entrée, Ctrl+X.
+
 ## Démarrer et tester ElasticSearch
 lancez ElasticSearch avec les commandes suivantes :
 ``` bash
@@ -47,7 +49,7 @@ sudo systemctl start elasticsearch
 ```
 Verifiez que ElasticSearch est bien lancé avec la commande :
 ```sudo systemctl status elasticsearch```
-Vous deviez alors voir **Active: active (running)**
+Vous devriez alors voir **Active: active (running)**
 
 Testez ElasticSearch avec la commande :
 ```curl -X GET "localhost:9200"```
@@ -61,3 +63,48 @@ Vous devriez alors voir une réponse JSON du style :
   ...
 }
 ```
+
+# Kibana
+## Installation de Kibana
+Maintenant que ElasticSearch est installé, vous allez pouvoir installer Kibana, qui va servir d'interface graphique pour lire les données stockées par ElasticSearch.
+
+Comme pour Elasticsearch, Kibana vient du dépôt Elastic officiel. Vous pouvez donc réutiliser la même clé et dépot que précédemment (il n'est donc pas nécessaire ces lignes de commande, mais pour être sur vous pouvez quand même les executer de nouveau):
+```bash 
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update
+```
+Installez kibana avec la commande :
+```sudo apt install kibana -y```
+
+## Configuration de Kibana
+ouvrez le fichier de configuration **kibana.yml** avec la commande :
+```sudo nano /etc/kibana/kibana.yml```
+
+Modifier le fichier comme ceci :
+```yaml
+server.port: 5601
+server.host: localhost
+elasticsearch.hosts: ["http://localhost:9200"]
+```
+Remarquez que Kibana va ouvre une connexion HTTP vers le noeud Elasticsearch définis précédemment avec **elasticsearch.hosts: ["http://localhost:9200"]**.
+Enregistrez vos modification en faisant Ctrl+O, entrée, Ctrl+X.
+
+## Démarrer et tester Kibana
+Pour lancer Kibana, executez les commandes suivantes :
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable kibana
+sudo systemctl start kibana
+```
+
+Verifiez que ElasticSearch et Kibana sont bien lancés avec les commandes :
+``` bash
+sudo systemctl status elasticsearch
+sudo systemctl status kibana
+```
+Vous devriez alors voir **Active: active (running)**
+
+Enfin, pour tester Kibana, ouvrez un navigateur et entrez : **http://localhost:5601**
+
+Vous accédez alors à la page d'accueil kibana.
