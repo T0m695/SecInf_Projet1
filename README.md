@@ -19,7 +19,7 @@ L'objectif de ce projet est de mettre en place une architecture de sécurité r�
 
 - Kibana : Outil de visualisation open-source qui permet de créer des tableaux de bord interactifs pour analyser et visualiser les données stockées dans ElasticSearch. https://www.elastic.co/fr/kibana/
 
-- Ubuntu : Distribution Linux populaire utilisée comme système d'exploitation pour les machines virtuelles dans ce projet. https://ubuntu.com
+- Kali Linux : Distribution Linux spécialisée dans les tests de pénétration et l'audit de sécurité, utilisée pour simuler des attaques et évaluer la sécurité des systèmes. https://www.kali.org
 
 - VirtualBox : Logiciel de virtualisation open-source qui permet de créer et de gérer des machines virtuelles sur un ordinateur hôte, ce qui nous a permis de simuler un environnement réseau complexe. https://www.virtualbox.org
 ## Architecture globale
