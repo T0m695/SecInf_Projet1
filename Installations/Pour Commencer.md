@@ -24,4 +24,4 @@ Pour commencer, il faut une machine virtuelle (nous utiliserons VirtualBox dans 
 
 - Une fois la machine virtuelle démarrée, suivez les instructions à l’écran pour installer Kali Linux sur la machine virtuelle (choisissez la langue, le fuseau horaire, la disposition du clavier, le nom d’utilisateur et le mot de passe).
 
-- Bravo ! 🎉 Vous avez installé Kali Linux sur votre machine virtuelle. Vous pouvez maintenant continuer sur [l’installation de Snort/Wazuh](./Installation%20Snort_Wazuh.md).
+- Bravo ! 🎉 Vous avez installé Kali Linux sur votre machine virtuelle. Vous pouvez maintenant continuer sur [l’installation de Snort](./Installation%20Snort.md).

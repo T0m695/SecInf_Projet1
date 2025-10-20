@@ -7,7 +7,8 @@ Pour les différentes machines virtuelles à installer, suivez les guides d'inst
 
 Pour le serveur principal de gestion des logs et d'affichage des données, suivez les guides d'installation ci-dessous :
 - [🧮 Installation de Wazuh Manager](./Installations/Installation%20Wazuh%20Manager.md)
-- [🧮 Installation d'ElasticSearch/Kibana](./Installations/Installation%20ElasticSearch_Kibana.md)
+- [🔍 Installation d'ElasticSearch/Kibana](./Installations/Installation%20ElasticSearch_Kibana.md)
+- [ Installation de Syslog-ng](./Installations/Installation%20syslog-ng.md)
 ## Objectifs
 L'objectif de ce projet est de mettre en place une architecture de sécurité réseau basée sur des outils open-source, permettant une détection d'intrusions et la gestion centralisée des logs classique dans l'industrie. Cette architecture vise à renforcer la sécurité des systèmes informatiques en surveillant le trafic réseau et en analysant les événements de sécurité, ce qui peut etre nécessaire dans des systemes informatiques d'entreprises ou d'organisations.
 ## Outils utilisés
@@ -18,6 +19,8 @@ L'objectif de ce projet est de mettre en place une architecture de sécurité r�
 - ElasticSearch : Moteur de recherche et d'analyse open-source utilisé pour stocker, rechercher et analyser de grandes quantités de données en temps réel. https://www.elastic.co/fr/elasticsearch/
 
 - Kibana : Outil de visualisation open-source qui permet de créer des tableaux de bord interactifs pour analyser et visualiser les données stockées dans ElasticSearch. https://www.elastic.co/fr/kibana/
+
+- Syslog-ng : Système de gestion des logs open-source qui collecte, filtre et stocke les messages de log provenant de diverses sources, facilitant ainsi la surveillance et l'analyse des événements système. https://www.syslog-ng.com
 
 - Kali Linux : Distribution Linux spécialisée dans les tests de pénétration et l'audit de sécurité, utilisée pour simuler des attaques et évaluer la sécurité des systèmes. https://www.kali.org
 
