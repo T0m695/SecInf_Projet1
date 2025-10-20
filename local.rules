@@ -1,0 +1,16 @@
+# FICHIER /etc/snort/rules/local.rules
+
+## Scénario 1: Inclusion de fichier local (LFI)
+alert tcp any any -> any 80 (msg:"TEST Local File Inclusion attempt"; flow:to_server,established; content:"/etc/passwd"; nocase; http_uri; sid:1000003; rev:1;)
+
+## Scénario 2: Exécution d'un code à distance (RCE) avec PHP
+alert tcp any any -> any 80 (msg:"TEST PHP code injection attempt"; flow:to_server,established; content:"<?php"; nocase; http_uri; sid:1000004; rev:1;)
+
+## Scénario 3: Injection SQL 
+alert tcp any any -> any 80 (msg:"TEST SQL Injection attempt"; flow:to_server,established; content:"' OR '1'='1"; nocase; http_uri; sid:1000001; rev:1;)
+
+## Scénario 4: Scan de ports ou reconnaissance réseau
+alert tcp any any -> 192.168.1.200 1:65535 (msg:"Port Scan Detected"; flags:S; threshold:type both, track by_src, count 10, seconds 60; sid:100004; rev:1;)
+
+## Scénario 5: Attaque par cross-site scripting (XSS)
+alert tcp any any -> 192.168.1.200 80 (msg:"Cross-Site Scripting Attempt"; flow:to_server,established; content:"<script>alert(1)</script>"; http_uri; nocase; sid:100005; rev:1;)
