@@ -35,6 +35,15 @@ cp snort.lua /etc/snort/snort.lua
 ```
 
 ### Lancer Snort
+Creer un service snort
+```bash
+cp snort3.service /etc/systemd/system/snort3.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable snort3.service
+sudo systemctl start snort3.service
+```
+**OU** Lancement manuel
 ```bash
 sudo snort -A alert_json -c /etc/snort/snort.lua -i eth0 -l /var/log/snort
 ```
