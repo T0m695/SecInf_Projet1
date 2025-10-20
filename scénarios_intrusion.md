@@ -59,3 +59,4 @@ La règle recherche des motifs ````<script> ```` ou  ````alert( ```` dans l’UR
 ``` bash
 alert tcp any any -> 192.168.1.200 80 (msg:"Cross-Site Scripting Attempt"; flow:to_server,established; content:"<script>alert(1)</script>"; http_uri; nocase; sid:100005; rev:1;)
 ```
+
