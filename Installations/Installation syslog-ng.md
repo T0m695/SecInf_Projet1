@@ -11,7 +11,7 @@ Copie la sortie du mot de passe encodé dans le fichier de configuration :
 ```
 syslog.conf
 ```
-## Copier les fichier de configuration
+## Copier le fichier de configuration
 
 ```bash
 sudo apt install syslog-ng -y
