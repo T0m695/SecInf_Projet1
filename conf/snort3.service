@@ -1,0 +1,11 @@
+[Unit]
+Description=Snort 3 Network Intrusion Detection
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/snort -D -c /etc/snort/snort.lua -i eth0 -l /var/log/snort -A alert_json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
