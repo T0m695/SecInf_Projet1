@@ -18,27 +18,9 @@ Enfin, mettez à jour les paquets et installer ElasticSearch :
 ``` sudo apt install elasticsearch -y ```
 
 ## 📡 Configuration de ElasticSearch
-Une fois l'installation faite, vous devez configurer ElasticSearch. Assurez vous d'avoir le fichier **elasticsearch.yml** présent en tapant la commande ```ls -l /etc/elasticsearch/```.
+Une fois l'installation faite, vous devez configurer ElasticSearch. Remplacez le fichier de configuration par défaut par celui fournit :
+```cp elasticsearch.yml /etc/elasticsearch/elasticsearch.yml```
 
-Si le fichier est bien présent, ouvrez le fichier avec la commande :
-```sudo nano /etc/elasticsearch/elasticsearch.yml```
-
-Modifier son contenu comme ci-dessous:
-
-```yaml
-cluster.name: my-cluster
-node.name: node-1
-path.data: /var/lib/elasticsearch
-path.logs: /var/log/elasticsearch
-network.host: localhost
-http.port: 9200
-discovery.seed_hosts: ["127.0.0.1"]
-cluster.initial_master_nodes: ["node-1"]
-```
-
-Attention, **network.host: localhost** permet à Elasticsearch d’être accessible seulement depuis votre machine locale.
-
-Enregistrez vos modification en faisant Ctrl+O, entrée, Ctrl+X.
 
 ## Démarrer et tester ElasticSearch
 lancez ElasticSearch avec les commandes suivantes :
