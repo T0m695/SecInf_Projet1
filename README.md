@@ -6,9 +6,10 @@ Pour les différentes machines virtuelles à installer, suivez les guides d'inst
 - [📡 Installation de Snort/Wazuh Agents](./Installations/Installation%20Snort_Wazuh.md)
 
 Pour le serveur principal de gestion des logs et d'affichage des données, suivez les guides d'installation ci-dessous :
-- [🧮 Installation de Wazuh Manager](./Installations/Installation%20Wazuh%20Manager.md)
-- [🔍 Installation d'ElasticSearch/Kibana](./Installations/Installation%20ElasticSearch_Kibana.md)
-- [ Installation de Syslog-ng](./Installations/Installation%20syslog-ng.md)
+- [Installation de Snort](./Installations/Installation%20Snort.md)
+- [Installation de Wazuh Manager](./Installations/Installation%20Wazuh%20Manager.md)
+- [Installation d'ElasticSearch/Kibana](./Installations/Installation%20ElasticSearch_Kibana.md)
+- [Installation de Syslog-ng](./Installations/Installation%20syslog-ng.md)
 ## Objectifs
 L'objectif de ce projet est de mettre en place une architecture de sécurité réseau basée sur des outils open-source, permettant une détection d'intrusions et la gestion centralisée des logs classique dans l'industrie. Cette architecture vise à renforcer la sécurité des systèmes informatiques en surveillant le trafic réseau et en analysant les événements de sécurité, ce qui peut etre nécessaire dans des systemes informatiques d'entreprises ou d'organisations.
 ## Outils utilisés
