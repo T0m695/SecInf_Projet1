@@ -1,92 +1,42 @@
-# 📡ElasticSearch
-## Prérequis
-Lorsque votre machine virtuelle est prête,ouvrez un terminal et mettez à jour le système avec la commande :
-```sudo apt update && sudo apt upgrade -y```
 
-## Installation de ElasticSearch
-Dans un premier temps, il faut installer les dépendances. Installez le paquet nécessaire pour les connexions HTTPS avec cette commande:
-```sudo apt install apt-transport-https wget curl gnupg -y```
+## Installation d’Elasticsearch
 
-Ensuite, Ajoutez la clé GPG d’Elasticsearch qui permet à votre système de vérifier l’authenticité des paquets téléchargé avec cette commande :
-```wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -```
+> 🔗 Référence : documentation officielle Elastic
 
-Ajoutez le dépôt Elasticsearch pour la version 7.x à vos sources APT : 
-```echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list```
-
-Enfin, mettez à jour les paquets et installer ElasticSearch : 
-``` sudo apt update ```
-``` sudo apt install elasticsearch -y ```
-
-## 📡 Configuration de ElasticSearch
-Une fois l'installation faite, vous devez configurer ElasticSearch. Remplacez le fichier de configuration par défaut par celui fournit :
-```cp elasticsearch.yml /etc/elasticsearch/elasticsearch.yml```
-
-
-## Démarrer et tester ElasticSearch
-lancez ElasticSearch avec les commandes suivantes :
-``` bash
-sudo systemctl daemon-reload
-sudo systemctl enable elasticsearch
-sudo systemctl start elasticsearch
-```
-Verifiez que ElasticSearch est bien lancé avec la commande :
-```sudo systemctl status elasticsearch```
-Vous devriez alors voir **Active: active (running)**
-
-Testez ElasticSearch avec la commande :
-```curl -X GET "localhost:9200"```
-
-Vous devriez alors voir une réponse JSON du style :
-``` JSON
-{
-  "name" : "node-1",
-  "cluster_name" : "my-cluster",
-  "version" : { "number" : "7.x.x", ... },
-  ...
-}
-```
-
-# Kibana
-## Installation de Kibana
-Maintenant que ElasticSearch est installé, vous allez pouvoir installer Kibana, qui va servir d'interface graphique pour lire les données stockées par ElasticSearch.
-
-Comme pour Elasticsearch, Kibana vient du dépôt Elastic officiel. Vous pouvez donc réutiliser la même clé et dépot que précédemment (il n'est donc pas nécessaire ces lignes de commande, mais pour être sur vous pouvez quand même les executer de nouveau):
-```bash 
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
-sudo apt update
-```
-Installez kibana avec la commande :
-```sudo apt install kibana -y```
-
-## Configuration de Kibana
-ouvrez le fichier de configuration **kibana.yml** avec la commande :
-```sudo nano /etc/kibana/kibana.yml```
-
-Modifier le fichier comme ceci :
-```yaml
-server.port: 5601
-server.host: localhost
-elasticsearch.hosts: ["http://localhost:9200"]
-```
-Remarquez que Kibana va ouvre une connexion HTTP vers le noeud Elasticsearch définis précédemment avec **elasticsearch.hosts: ["http://localhost:9200"]**.
-Enregistrez vos modification en faisant Ctrl+O, entrée, Ctrl+X.
-
-## Démarrer et tester Kibana
-Pour lancer Kibana, executez les commandes suivantes :
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable kibana
-sudo systemctl start kibana
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+sudo apt-get install apt-transport-https -y
+echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+```
+Copier ensuite le fichier de configuration :
+```bash
+sudo cp elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 ```
 
-Verifiez que ElasticSearch et Kibana sont bien lancés avec les commandes :
-``` bash
-sudo systemctl status elasticsearch
-sudo systemctl status kibana
+---
+
+## Installation de Kibana
+
+> 🔗 Référence : documentation officielle Elastic
+
+```bash
+sudo apt-get update && sudo apt-get install kibana -y
 ```
-Vous devriez alors voir **Active: active (running)**
+Dans le dossier :
+```
+/usr/share/elasticsearch
+```
+Génèrer le token d’enrôlement Kibana :
+```bash
+bin/elasticsearch-create-enrollment-token -s kibana
+```
 
-Enfin, pour tester Kibana, ouvrez un navigateur et entrez : **http://localhost:5601**
+### Démarrage et configuration
 
-Vous accédez alors à la page d'accueil kibana.
+- Lancer **Elasticsearch** et **Kibana**.
+- Accèder à **http://localhost:5601** pour la configuration du token.
+
+Pour réinitialiser le mot de passe `elastic` :
+```bash
+bin/elasticsearch-reset-password -u elastic
+```
